@@ -13,7 +13,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "tb_product")
+@Table(name = "tb_product") // nome da tabela
 public class Product {
 
     @Id
@@ -24,10 +24,10 @@ public class Product {
 
     private Double price;
 
-    @ManyToMany
-    @JoinTable(name = "tb_product_category",
-            joinColumns = @JoinColumn(name = "product_id"),
-            inverseJoinColumns = @JoinColumn(name = "category_id"))
+    @ManyToMany //muitos para muitos na tabela de associação entre as duas tabelas (product e category) aonde está o asterisco no diagrama de classes
+    @JoinTable(name = "tb_product_category", //nome da tabela de associação que vai ser criada
+            joinColumns = @JoinColumn(name = "product_id"), //chave estrangeira da tabela que estamos
+            inverseJoinColumns = @JoinColumn(name = "category_id")) //chave estrangeira da outra tabela
     private Set<Category> categories = new HashSet<>();
 
     public Product() {

@@ -14,13 +14,13 @@ import java.util.Set;
 @Table(name = "tb_category")
 public class Category {
 
-    @Id
+    @Id //
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
 
-    @ManyToMany(mappedBy = "categories")
+    @ManyToMany(mappedBy = "categories") // nome do atributo que mapeou o relacionamento na outra classe
     private Set<Product> products = new HashSet<>();
 
     public Category() {

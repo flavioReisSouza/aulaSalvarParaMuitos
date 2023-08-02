@@ -26,6 +26,7 @@ public class ProductDTO {
         id = entity.getId();
         name = entity.getName();
         price = entity.getPrice();
+
         for (Category cat : entity.getCategories()) {
             categories.add(new CategoryDTO(cat));
         }

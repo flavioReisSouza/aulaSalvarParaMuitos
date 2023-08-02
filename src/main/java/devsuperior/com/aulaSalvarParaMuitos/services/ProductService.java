@@ -13,23 +13,23 @@ import org.springframework.stereotype.Service;
 public class ProductService {
 
     @Autowired
-    private ProductRepository repository;
+    private ProductRepository repository; //injeta uma dependência da classe ProductRepository
 
     @Autowired
-    private CategoryRepository categoryRepository;
+    private CategoryRepository categoryRepository; //injeta uma dependência da classe CategoryRepository
 
-    public ProductDTO insert(ProductDTO dto) {
+    public ProductDTO insert(ProductDTO dto) { //método que insere um produto no banco de dados
 
-       Product entity = new Product();
-       entity.setName(dto.getName());
-       entity.setPrice(dto.getPrice());
+       Product entity = new Product(); //instancia um produto
+       entity.setName(dto.getName()); //seta o nome do produto
+       entity.setPrice(dto.getPrice()); //seta o preço do produto
 
-       for (CategoryDTO catDTO : dto.getCategories()) {
-           Category cat = categoryRepository.getReferenceById(catDTO.getId());
-           entity.getCategories().add(cat);
+       for (CategoryDTO catDTO : dto.getCategories()) { //percorre a lista de categorias do produto
+           Category cat = categoryRepository.getReferenceById(catDTO.getId()); //getReferenceById() é o método que retorna uma referência a uma entidade (no caso, uma o nome de uma categoria)
+           entity.getCategories().add(cat); //adiciona a referência a uma entidade (no caso, o nome de uma categoria) à lista de categorias do produto
        }
 
-       return new ProductDTO(repository.save(entity));
+       return new ProductDTO(repository.save(entity)); //save() é o método que salva o produto no banco de dados e retorna o produto salvo
     }
 
 }

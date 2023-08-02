@@ -27,8 +27,8 @@ public class ProductDTO {
         name = entity.getName();
         price = entity.getPrice();
 
-        for (Category cat : entity.getCategories()) {
-            categories.add(new CategoryDTO(cat));
+        for (Category cat : entity.getCategories()) { //percorre a lista de categorias do produto
+            categories.add(new CategoryDTO(cat)); //adiciona a referência a uma entidade (no caso, o nome de uma categoria) à lista de categorias do produto
         }
     }
 
